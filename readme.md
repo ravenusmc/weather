@@ -7,4 +7,4 @@ The data in this file was gathered from the fivethirtyeight blog at: https://raw
 # Getting started
 ## Installing 
 
-You will need to have the pandas and mathplot.lib libraries installed. This program also uses Python 3.4 but any Python 3.X should work. 
+You will need to have the pandas and matplotlib libraries installed. This program also uses Python 3.4 but any Python 3.X should work. 
