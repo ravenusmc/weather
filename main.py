@@ -50,6 +50,7 @@ def mainMenu():
 
 def meanTemp(weather):
   print("\033c")
+  print(weather.head())
 
 
 
