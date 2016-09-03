@@ -1,7 +1,8 @@
 #Main File for the project.
 import pandas as pd 
 import numpy as np 
-import matplotlib.pyplot as plt
+from matplotlib import pyplot as plt 
+from datetime import datetime
 
 #Importing required file that I will need for the program
 from valid import *
@@ -48,10 +49,44 @@ def mainMenu():
   elif choice == 5:
     quit()
 
+#This funtion will show the user the average mean temp data. 
 def meanTemp(weather):
   print("\033c")
-  print(weather.head())
+  print("Once the data appears, you must close the graph to move on")
+  input("Press enter to see the avg mean Temperatures!")
+  #Here I am setting up arrays to hold the dates and avgtemps
+  dates, avgTemps = [], []
+  #i will be a counter that as it increments will pull data from that specific slot.
+  i = 0
+  #These next two lines look at the specific columns. In this case, the date and actual_mean_temp
+  #columns.
+  dateData = weather[['date']]
+  meanTemp = weather[['actual_mean_temp']]
 
+  #A while loop is started which will loop through each date.
+  while i < 364:
+    #These next two lines get the date and the mean temperature at that specific date.
+    date = dateData.iat[i,0]
+    temp = meanTemp.iat[i,0]
+    #This line is needed to convert the date to another format to use with matplotlib. 
+    convertedDate = datetime.strptime(date, '%Y-%m-%d')
+    #These next two lines will append the data at the specific date and average mean columns to
+    #the dates and avgTemps arrays. 
+    dates.append(convertedDate)
+    avgTemps.append(temp)
+    #The counter is increased by one which will bring it to the next row the next time the 
+    #loop goes around. 
+    i += 1
+
+  #This line is used to configure the size of the display.
+  fig = plt.figure(dpi=128, figsize=(10,6))
+  plt.plot(dates, avgTemps, linewidth=2, c="blue")
+  plt.title("Average Daily Temperature, 2014", fontsize=16)
+  #This line will turn the dates, on the x axis diagnol for easy ready. 
+  fig.autofmt_xdate()
+  plt.xlabel("Date", fontsize=14)
+  plt.ylabel("Temperature", fontsize=12)
+  plt.show()
 
 
 

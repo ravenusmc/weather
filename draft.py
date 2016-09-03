@@ -1,7 +1,7 @@
 #Main File for the project.
 import pandas as pd 
 import numpy as np 
-import matplotlib.pyplot as plt
+from matplotlib import pyplot as plt 
 from datetime import datetime
 
 print("\033c")
@@ -13,18 +13,26 @@ weather = pd.read_csv('weather.csv')
 # print(datetime.strptime(test, '%Y-%m-%d'))
 
 
-dates = [] 
+dates, avgTemps = [], []
 i = 0
 dateData = weather[['date']]
+meanTemp = weather[['actual_mean_temp']]
 
 while i < 364:
   date = dateData.iat[i,0]
+  temp = meanTemp.iat[i,0]
   convertedDate = datetime.strptime(date, '%Y-%m-%d')
-  print(convertedDate)
   dates.append(convertedDate)
+  avgTemps.append(temp)
   i += 1
 
-print(dates)
+fig = plt.figure(dpi=128, figsize=(10,6))
+plt.plot(dates, avgTemps, linewidth=2, c="blue")
+plt.title("Weather", fontsize=16)
+fig.autofmt_xdate()
+plt.xlabel("Year", fontsize=14)
+plt.ylabel("Temperature", fontsize=12)
+plt.show()
   
 
 
