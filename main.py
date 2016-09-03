@@ -92,6 +92,27 @@ def meanTemp(weather):
 
 def lowTemp(weather):
   introLines()
+  dates, avgMinTemps = [], []
+  i = 0
+  dateData = weather[['date']]
+  avgMinTemp = weather[['average_min_temp']]
+
+  while i < 364:
+    date = dateData.iat[i,0]
+    temp = avgMinTemp.iat[i,0]
+    convertedDate = datetime.strptime(date, '%Y-%m-%d')
+    dates.append(convertedDate)
+    avgMinTemps.append(temp)
+    i += 1
+
+  fig = plt.figure(dpi=128, figsize=(10,6))
+  plt.plot(dates, avgMinTemps, linewidth=2, c="blue")
+  plt.title("Average Minimun Temperatures", fontsize=16)
+  fig.autofmt_xdate()
+  plt.xlabel("Date", fontsize=14)
+  plt.ylabel("Avg Min Temperature", fontsize=12)
+  plt.show()
+  
 
 ### Auxillary Functions below this line.
 

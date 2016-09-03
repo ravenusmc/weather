@@ -7,23 +7,20 @@ from datetime import datetime
 print("\033c")
 weather = pd.read_csv('weather.csv')
 
-# date = weather[['date']]
-# print(date.iat[2,0])
-# test = date.iat[2,0]
-# print(datetime.strptime(test, '%Y-%m-%d'))
 
 
-dates, avgTemps = [], []
+
+dates, avgMinTemps = [], []
 i = 0
 dateData = weather[['date']]
-meanTemp = weather[['actual_mean_temp']]
+avgMinTemp = weather[['average_min_temp']]
 
 while i < 364:
   date = dateData.iat[i,0]
-  temp = meanTemp.iat[i,0]
+  temp = avgMinTemp.iat[i,0]
   convertedDate = datetime.strptime(date, '%Y-%m-%d')
   dates.append(convertedDate)
-  avgTemps.append(temp)
+  avgMinTemps.append(temp)
   i += 1
 
 fig = plt.figure(dpi=128, figsize=(10,6))
@@ -34,11 +31,6 @@ plt.xlabel("Year", fontsize=14)
 plt.ylabel("Temperature", fontsize=12)
 plt.show()
   
-
-
-
-
-
 
 #This will get the date data that I need in the correct format
 # date = '2014-7-1'
