@@ -21,7 +21,10 @@ def main():
   while not mainValid(choice):
     print("Incorrect selection!")
     choice = int(input("What is your choice? "))
-  mainQuitSelection(choice)
+  if choice == 1:
+    mainMenu()
+  elif choice == 2:
+    quit()
 
 #This is the main menu of the program which will allow the user to select what they want to look at.
 #Finally the data sample is set up here as well.
@@ -87,12 +90,14 @@ def meanTemp(weather):
   plt.xlabel("Date", fontsize=14)
   plt.ylabel("Temperature", fontsize=12)
   plt.show()
-
-
+  mainQuitSelection()
 
 #Auxillary Functions below this line.
 
-def mainQuitSelection(choice):
+def mainQuitSelection():
+  print("1. Return to main menu")
+  print("2. Quit")
+  choice = int(input("What is your choice: "))
   if choice == 1: 
     mainMenu()
   elif choice == 2:
@@ -101,8 +106,6 @@ def mainQuitSelection(choice):
 def quit():
   print("I am sorry you do not want to use this program!")
   print("Please come again!")
-
-
 
 
 main()
