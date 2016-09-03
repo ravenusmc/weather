@@ -112,6 +112,7 @@ def lowTemp(weather):
   plt.xlabel("Date", fontsize=14)
   plt.ylabel("Avg Min Temperature", fontsize=12)
   plt.show()
+  mainQuitSelection()
   
 
 ### Auxillary Functions below this line.
