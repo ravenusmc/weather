@@ -44,7 +44,7 @@ def mainMenu():
   if choice == 1: 
     meanTemp(weather)
   elif choice == 2:
-    lowTemp()
+    lowTemp(weather)
   elif choice == 3:
     highTemp()
   elif choice == 4:
@@ -54,9 +54,7 @@ def mainMenu():
 
 #This funtion will show the user the average mean temp data. 
 def meanTemp(weather):
-  print("\033c")
-  print("Once the data appears, you must close the graph to move on")
-  input("Press enter to see the avg mean Temperatures!")
+  introLines()
   #Here I am setting up arrays to hold the dates and avgtemps
   dates, avgTemps = [], []
   #i will be a counter that as it increments will pull data from that specific slot.
@@ -92,8 +90,13 @@ def meanTemp(weather):
   plt.show()
   mainQuitSelection()
 
-#Auxillary Functions below this line.
+def lowTemp(weather):
+  introLines()
 
+### Auxillary Functions below this line.
+
+#This function will present the user with a menu at the end of each graphing function on whether 
+#or not they want to return to the main menu or leave the program.
 def mainQuitSelection():
   print("1. Return to main menu")
   print("2. Quit")
@@ -103,9 +106,16 @@ def mainQuitSelection():
   elif choice == 2:
     quit()
 
+#Quit function that which will be displayed over and over again. 
 def quit():
   print("I am sorry you do not want to use this program!")
   print("Please come again!")
+
+#This function will be used for the opening lines for each function which is used with the program.
+def introLines():
+  print("\033c")
+  print("Once the data appears, you must close the graph to move on")
+  input("Press enter to see the Graph!")
 
 
 main()
