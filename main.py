@@ -90,6 +90,8 @@ def meanTemp(weather):
   plt.show()
   mainQuitSelection()
 
+#This function will show the user the average low temperatures. Most of the code is the same as 
+#Mean Temp function which I could probably combine these.
 def lowTemp(weather):
   introLines()
   dates, avgMinTemps = [], []
@@ -114,6 +116,7 @@ def lowTemp(weather):
   plt.show()
   mainQuitSelection()
 
+#This function will show the user the average high temperatures.
 def highTemp(weather):
   introLines()
   dates, avgHighTemps = [], []
@@ -138,6 +141,7 @@ def highTemp(weather):
   plt.show()
   mainQuitSelection()
 
+#This function will show the user the average precipitation.
 def averageRain(weather):
   introLines()
   dates, avgRain = [], []
@@ -161,9 +165,6 @@ def averageRain(weather):
   plt.ylabel("Avg Rain Fall (inches)", fontsize=12)
   plt.show()
   mainQuitSelection()
-
-
-  
 
 ### Auxillary Functions below this line.
 
