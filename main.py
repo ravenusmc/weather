@@ -116,6 +116,27 @@ def lowTemp(weather):
 
 def highTemp(weather):
   introLines()
+  dates, avgHighTemps = [], []
+  i = 0
+  dateData = weather[['date']]
+  avgHighTemp = weather[['average_max_temp']]
+
+  while i < 364:
+    date = dateData.iat[i,0]
+    temp = avgHighTemp.iat[i,0]
+    convertedDate = datetime.strptime(date, '%Y-%m-%d')
+    dates.append(convertedDate)
+    avgHighTemps.append(temp)
+    i += 1
+
+  fig = plt.figure(dpi=128, figsize=(10,6))
+  plt.plot(dates, avgHighTemps, linewidth=2, c="blue")
+  plt.title("Average High Temperatures", fontsize=16)
+  fig.autofmt_xdate()
+  plt.xlabel("Date", fontsize=14)
+  plt.ylabel("Avg High Temperature", fontsize=12)
+  plt.show()
+  mainQuitSelection()
 
   
 
