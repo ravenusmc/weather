@@ -13,7 +13,7 @@ weather = pd.read_csv('weather.csv')
 dates, avgHighTemps = [], []
 i = 0
 dateData = weather[['date']]
-avgHighTemp = weather[['average_max_temp']]
+avgHighTemp = weather[['average_precipitation']]
 
 while i < 364:
   date = dateData.iat[i,0]

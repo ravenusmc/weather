@@ -138,6 +138,31 @@ def highTemp(weather):
   plt.show()
   mainQuitSelection()
 
+def averageRain(weather):
+  introLines()
+  dates, avgRain = [], []
+  i = 0
+  dateData = weather[['date']]
+  avgRainFall = weather[['average_precipitation']]
+
+  while i < 364:
+    date = dateData.iat[i,0]
+    temp = avgRainFall.iat[i,0]
+    convertedDate = datetime.strptime(date, '%Y-%m-%d')
+    dates.append(convertedDate)
+    avgRain.append(temp)
+    i += 1
+
+  fig = plt.figure(dpi=128, figsize=(10,6))
+  plt.plot(dates, avgRain, linewidth=2, c="blue")
+  plt.title("Average Rain Fall", fontsize=16)
+  fig.autofmt_xdate()
+  plt.xlabel("Date", fontsize=14)
+  plt.ylabel("Avg Rain Fall (inches)", fontsize=12)
+  plt.show()
+  mainQuitSelection()
+
+
   
 
 ### Auxillary Functions below this line.
