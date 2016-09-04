@@ -46,9 +46,9 @@ def mainMenu():
   elif choice == 2:
     lowTemp(weather)
   elif choice == 3:
-    highTemp()
+    highTemp(weather)
   elif choice == 4:
-    averageRain()
+    averageRain(weather)
   elif choice == 5:
     quit()
 
@@ -113,6 +113,10 @@ def lowTemp(weather):
   plt.ylabel("Avg Min Temperature", fontsize=12)
   plt.show()
   mainQuitSelection()
+
+def highTemp(weather):
+  introLines()
+
   
 
 ### Auxillary Functions below this line.
