@@ -8,23 +8,21 @@ print("\033c")
 weather = pd.read_csv('weather.csv')
 
 
-
-
-dates, avgHighTemps = [], []
+dates, recordTemp = [], []
 i = 0
 dateData = weather[['date']]
-avgHighTemp = weather[['average_precipitation']]
+recordMaxTemp = weather[['record_max_temp_year']]
 
 while i < 364:
   date = dateData.iat[i,0]
-  temp = avgHighTemp.iat[i,0]
+  temp = recordMaxTemp.iat[i,0]
   convertedDate = datetime.strptime(date, '%Y-%m-%d')
   dates.append(convertedDate)
-  avgHighTemps.append(temp)
+  recordTemp.append(temp)
   i += 1
 
 fig = plt.figure(dpi=128, figsize=(10,6))
-plt.plot(dates, avgHighTemps, linewidth=2, c="blue")
+plt.plot(dates, recordTemp, linewidth=2, c="blue")
 plt.title("Average High Temperatures", fontsize=16)
 fig.autofmt_xdate()
 plt.xlabel("Date", fontsize=14)

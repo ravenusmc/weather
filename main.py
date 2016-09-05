@@ -36,7 +36,8 @@ def mainMenu():
   print("2. Daily Low Temperatures")
   print("3. Daily High Temperatures")
   print("4. Average precipitation")
-  print("5. Quit")
+  print("5. Record Max Temperature-date to year")
+  print("6. Quit")
   choice = int(input("What is your choice? "))
   while not mainMenuValid(choice):
     print("Invalid Selection!")
@@ -168,8 +169,30 @@ def averageRain(weather):
   plt.show()
   mainQuitSelection()
 
+#This function shows the user what year, on a specific date, had the record max tempterature. 
 def recordmaxtemp(weather):
   introLines()
+  dates, recordTemp = [], []
+  i = 0
+  dateData = weather[['date']]
+  recordMaxTemp = weather[['record_max_temp_year']]
+
+  while i < 364:
+    date = dateData.iat[i,0]
+    temp = recordMaxTemp.iat[i,0]
+    convertedDate = datetime.strptime(date, '%Y-%m-%d')
+    dates.append(convertedDate)
+    recordTemp.append(temp)
+    i += 1
+
+  fig = plt.figure(dpi=128, figsize=(10,6))
+  plt.plot(dates, recordTemp, linewidth=2, c="blue")
+  plt.title("Average High Temperatures", fontsize=16)
+  fig.autofmt_xdate()
+  plt.xlabel("Date", fontsize=14)
+  plt.ylabel("Avg High Temperature", fontsize=12)
+  plt.show()
+  mainQuitSelection()
 
 ### Auxillary Functions below this line.
 
