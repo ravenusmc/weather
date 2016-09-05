@@ -50,6 +50,8 @@ def mainMenu():
   elif choice == 4:
     averageRain(weather)
   elif choice == 5:
+    recordmaxtemp(weather)
+  elif choice == 6:
     quit()
 
 #This funtion will show the user the average mean temp data. 
@@ -165,6 +167,9 @@ def averageRain(weather):
   plt.ylabel("Avg Rain Fall (inches)", fontsize=12)
   plt.show()
   mainQuitSelection()
+
+def recordmaxtemp(weather):
+  introLines()
 
 ### Auxillary Functions below this line.
 
